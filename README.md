@@ -35,7 +35,7 @@ A `Pilot` has:
 
 A `Plane` has:
 
-* an plane type (e.g. *BOEING747*) which stores capacity and total weight
+* a plane type (e.g. *BOEING747*) which stores capacity and total weight
 <details>
   <summary>Hint</summary>
   <p>Perhaps use an `enum` for this</p>
