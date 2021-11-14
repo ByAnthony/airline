@@ -1,4 +1,4 @@
-# ** Java Airline!** :airplane:
+# **Java Airline!** :airplane:
 
 Your task is to model a system for the world renowned airline __JavaAir__, to allow them to manage their flights. You should use the tools you have learnt this week _where appropriate and useful_. Remember to **TDD**!
 
