@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class PassengerTest {
 
@@ -10,7 +11,7 @@ public class PassengerTest {
 
     @Before
     public void before(){
-        passenger = new Passenger("Anthony", 2);
+        passenger = new Passenger("Anthony", 2, false);
     }
 
     @Test
@@ -22,4 +23,8 @@ public class PassengerTest {
     public void hasNumberOfBags(){
         assertEquals(2, passenger.getNumberOfBags());
     }
+
+    @Test
+    public void getFlightStatus(){
+        assertFalse(passenger.getFlightStatus()); }
 }

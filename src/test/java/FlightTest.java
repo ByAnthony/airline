@@ -5,9 +5,11 @@ import Human.Rank;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FlightTest {
 
@@ -48,22 +50,22 @@ public class FlightTest {
         cabinCrewMember4 = new CabinCrewMember("Jordan", Rank.FLIGHT_ATTENDANT);
         cabinCrewMember5 = new CabinCrewMember("Athina", Rank.PURSER);
 
-        passenger1 = new Passenger("Neil", 3);
-        passenger2 = new Passenger("Morven", 5);
-        passenger3 = new Passenger("Andrew B.", 0);
-        passenger4 = new Passenger("Carlos", 1);
-        passenger5 = new Passenger("Kieran", 2);
-        passenger6 = new Passenger("Andrew M.", 4);
-        passenger7 = new Passenger("David", 1);
-        passenger8 = new Passenger("Iain", 2);
-        passenger9 = new Passenger("Vinnie", 1);
-        passenger10 = new Passenger("Lucinda", 3);
+        passenger1 = new Passenger("Neil", 3, false);
+        passenger2 = new Passenger("Morven", 5, false);
+        passenger3 = new Passenger("Andrew B.", 0, false);
+        passenger4 = new Passenger("Carlos", 1, false);
+        passenger5 = new Passenger("Kieran", 2, false);
+        passenger6 = new Passenger("Andrew M.", 4, false);
+        passenger7 = new Passenger("David", 1, false);
+        passenger8 = new Passenger("Iain", 2, false);
+        passenger9 = new Passenger("Vinnie", 1, false);
+        passenger10 = new Passenger("Lucinda", 3, false);
 
         pilots = new ArrayList<>();
         cabinCrewMembers = new ArrayList<>();
         passengers = new ArrayList<>();
 
-        flight = new Flight(PlaneType.AIRBUSA320, "FR756", "GLA", "CDG", "11:50");
+        flight = new Flight(PlaneType.AIRBUSA320, "FR756", "GLA", "CDG", LocalDateTime.of(2021, 12, 20, 11, 50));
     }
 
     @Test
@@ -125,7 +127,7 @@ public class FlightTest {
 
     @Test
     public void hasDepartureTime(){
-        assertEquals("11:50", flight.getDepartureTime());
+        assertEquals(LocalDateTime.of(2021, 12, 20, 11, 50), flight.getDepartureTime());
     }
 
     @Test
@@ -146,5 +148,11 @@ public class FlightTest {
         flight.addPassenger(passenger9);
         flight.addPassenger(passenger10);
         assertEquals(76, flight.getNumberOfSeatsAvailable());
+    }
+
+    @Test
+    public void hasFlightStatus(){
+        flight.addPassenger(passenger1);
+        assertTrue(passenger1.setFlightStatus());
     }
 }
