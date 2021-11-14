@@ -155,4 +155,9 @@ public class FlightTest {
         flight.addPassenger(passenger1);
         assertTrue(passenger1.setFlightStatus());
     }
+
+    @Test
+    public void hasNumberOfSeats(){
+        assertEquals(86, flight.getNumberOfSeats());
+    }
 }

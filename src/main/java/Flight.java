@@ -4,6 +4,7 @@ import Human.Pilot;
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Flight{
 
@@ -15,6 +16,7 @@ public class Flight{
     private String destination;
     private String departureAirport;
     private LocalDateTime departureTime;
+    private int seats;
 
     public Flight(PlaneType planeType, String flightNumber, String destination, String departureAirport, LocalDateTime departureTime) {
         this.pilots = new ArrayList<>();
@@ -25,6 +27,7 @@ public class Flight{
         this.destination = destination;
         this.departureAirport = departureAirport;
         this.departureTime = departureTime;
+        this.seats = planeType.getCapacity();
     }
 
     public int getNumberOfPilot() {
@@ -50,6 +53,9 @@ public class Flight{
     public void addPassenger(Passenger passenger) {
         if(this.getNumberOfSeatsAvailable() > 0) {
             passengers.add(passenger);
+            passenger.setFlightStatus();
+            int randomSeat = ThreadLocalRandom.current().nextInt(seats);
+            passenger.setSeatNumber(randomSeat);
         }
     }
 
@@ -86,7 +92,10 @@ public class Flight{
     }
 
     public int getNumberOfSeatsAvailable(){
-        return this.getCapacity() - this.getNumberOfPassenger();
+        return seats - this.getNumberOfPassenger();
     }
 
+    public int getNumberOfSeats(){
+        return seats;
+    }
 }

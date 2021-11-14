@@ -4,6 +4,7 @@ public class Passenger extends Person {
 
     private int numberOfBags;
     private boolean flight;
+    private int seat;
 
     public Passenger(String name, int numberOfBags, boolean flight) {
         super(name);
@@ -19,4 +20,5 @@ public class Passenger extends Person {
 
     public boolean setFlightStatus(){ return true; }
 
+    public int setSeatNumber(int randomSeat) { return randomSeat; }
 }
